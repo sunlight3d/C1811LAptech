@@ -15,6 +15,7 @@ namespace QuanLyNhac
     {
         private List<Genre> genres;
         private Song selectedSong;
+        private DetailSong detailSong;
         List<Song> foundSongs;
         public SongsList()
         {
@@ -23,6 +24,7 @@ namespace QuanLyNhac
         }
         private void reloadData()
         {
+            this.treeViewGenre.Nodes.Clear();
             this.treeViewGenre.Nodes.Add("Songs");
             genres = Database.SharedInstance().getAllGenres();
             this.treeViewGenre.Nodes[0].Nodes.Clear();
@@ -31,7 +33,7 @@ namespace QuanLyNhac
                 this.treeViewGenre.Nodes[0].Nodes.Add(genre.GenreName);
             });            
             this.treeViewGenre.NodeMouseClick += TreeViewGenre_NodeMouseClick;
-
+            this.listViewSongs.Columns.Clear();
 
         }
 
@@ -75,8 +77,19 @@ namespace QuanLyNhac
             {
                 return;
             }
-            MessageBox.Show("Ban edit " + selectedSong.ArtistName);
+            if (this.detailSong == null                 
+                || this.detailSong.IsDisposed == true)
+            {
+                this.detailSong = new DetailSong();
+            }
+            this.detailSong.SelectedSong = selectedSong;
+            this.detailSong.Disposed += DetailSong_Disposed;
+            this.detailSong.Show();
+        }
 
+        private void DetailSong_Disposed(object sender, EventArgs e)
+        {
+            this.reloadData();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -85,7 +98,16 @@ namespace QuanLyNhac
             {
                 return;
             }
-            MessageBox.Show("Ban xoa " + selectedSong.ArtistName);
+            var messageBox = MessageBox.Show(
+                "Are you sure to delete this ?", "Delete song", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question, 
+                MessageBoxDefaultButton.Button1);
+            if (messageBox == System.Windows.Forms.DialogResult.Yes) {
+                Database.SharedInstance().deleteSong(this.selectedSong);
+                this.reloadData();
+            }
+
         }
     }
 }
