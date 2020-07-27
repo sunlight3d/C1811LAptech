@@ -1,0 +1,47 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";    
+    Console.WriteLine("aa");
+    //Model == exams1
+}
+
+<h2>Danh sach cac exams</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(examItem => (examItem as bai01.Models.Exam).Student.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(examItem => (examItem as bai01.Models.Exam).Subject.SubjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(examItem => (examItem as bai01.Models.Exam).Mark)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var examItem in ViewBag.exams) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => (examItem as bai01.Models.Exam).Student.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => (examItem as bai01.Models.Exam).Subject.SubjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => (examItem as bai01.Models.Exam).Mark)
+        </td>
+        <td>
+            @Html.ActionLink("Edit Exam", "SuaThongTin", new { id= examItem.ExamId }) |
+            @Html.ActionLink("Details", "Details", new { id= examItem.ExamId }) |
+            @Html.ActionLink("Delete", "Delete", new { id= examItem.ExamId })
+        </td>
+    </tr>
+}
+
+</table>
