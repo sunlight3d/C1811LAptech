@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwinSelfHostExample", "OwinSelfHostExample\OwinSelfHostExample.csproj", "{F5DA8049-4C4C-49CC-9423-98B91E4662CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5DA8049-4C4C-49CC-9423-98B91E4662CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5DA8049-4C4C-49CC-9423-98B91E4662CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5DA8049-4C4C-49CC-9423-98B91E4662CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5DA8049-4C4C-49CC-9423-98B91E4662CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30CB4AB2-3D62-4AC9-A7D0-319A5AF3ACA8}
+	EndGlobalSection
+EndGlobal
