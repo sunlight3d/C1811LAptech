@@ -16,7 +16,12 @@ namespace OwinSelfHost.Controllers
                 var query = from employee in dbContext.Employees
                             select new EmployeeModel { 
                                 EmployeeId = employee.EmpID,
-                                EmployeeName = employee.EmpName
+                                EmployeeName = employee.EmpName,
+                                Address = employee.Address,
+                                Email = employee.Email,
+                                DateOfJoin = employee.DOJ,
+                                Gender = employee.Gender == true ? 1 : 0,
+                                YearOfBirth = employee.YearOfBirth
                             };
                 var listOfEmployees = query.ToList();
                 return Ok(listOfEmployees);
@@ -31,7 +36,12 @@ namespace OwinSelfHost.Controllers
                             select new EmployeeModel
                             {
                                 EmployeeId = employee.EmpID,
-                                EmployeeName = employee.EmpName
+                                EmployeeName = employee.EmpName,
+                                Address = employee.Address,
+                                Email = employee.Email,
+                                DateOfJoin = employee.DOJ,
+                                Gender = employee.Gender == true ? 1 : 0,
+                                YearOfBirth = employee.YearOfBirth
                             };
                 var foundEmployee = query.FirstOrDefault();
                 return Ok(foundEmployee);

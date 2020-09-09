@@ -13,9 +13,9 @@ namespace OwinSelfHost
         public int DepartmentId { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
-        public DateTime DateOfJoin { get; set; }
+        public System.DateTime? DateOfJoin { get; set; }
         public int Gender { get; set; }
-        public int YearOfBirth { get; set; }
+        public int? YearOfBirth { get; set; }
 
     }
 }
